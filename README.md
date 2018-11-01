@@ -1,6 +1,6 @@
 # Wox.Plugin.PRPR Collect
 
-Auto collect PRPR pictures to one folder where you like.
+Auto **collect** PRPR pictures to one folder where you like.
 
 ![screenshots](/Images/zero_20181101_180648.png)
 
