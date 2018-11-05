@@ -42,23 +42,11 @@ class Main(Wox):
         if param:
             if param in ('lock', 'lockscreen'):
                 p = os.path.join(RAW_PATH, 'Lockscreen')
-                self.collect(p)
+                result.extend(self.collect(p))
 
-                title = "Pictures are already collected."
-                subtitle = 'Click to open the aim folder in window.'
-                method = 'openFolder'
-                result.append(
-                    self.genaction(title, subtitle, method, AIM_PATH))
-
-            elif param in('desk', 'desktop'):
+            elif param in ('desk', 'desktop'):
                 p = os.path.join(RAW_PATH, 'Wallpaper')
-                self.collect(p)
-
-                title = "Pictures are already collected."
-                subtitle = 'Click to open the aim folder in window.'
-                method = 'openFolder'
-                result.append(
-                    self.genaction(title, subtitle, method, AIM_PATH))
+                result.extend(self.collect(p))
 
             else:
                 title = "Try to key in right command."
@@ -71,22 +59,33 @@ class Main(Wox):
 
         return result
 
-    @staticmethod
-    def collect(path):
+    def collect(self, path):
         """Move wallpaper from PRPR cache path to aim path.
 
         Arguments:
             path {str} -- PRPR cache path
         """
 
+        result = []
+        method = 'openFolder'
+        subtitle = 'Click to open the aim folder in window.'
+
         for file in os.listdir(path):
             if reg.match(file):  # find the yande's pictures
                 raw = os.path.join(path, file)
                 aim = os.path.join(AIM_PATH, file)
-
                 if not os.path.exists(aim):
                     # copy picture to aim path
                     shutil.copy(raw, aim)
+                    title = "{} is collected.".format(file)
+                    p = aim
+                else:
+                    title = "Failed, {} already had collected.".format(file)
+                    p = raw
+
+                result.append(self.genaction(title, subtitle, method, p))
+
+        return result
 
     @staticmethod
     def genformat(title, subtitle=''):
