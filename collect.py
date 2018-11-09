@@ -68,7 +68,7 @@ class Main(Wox):
 
         result = []
         method = 'openFolder'
-        subtitle = 'Click to open the aim folder in window.'
+        subtitle = 'Click to open the wallpaper.'
 
         for file in os.listdir(path):
             if reg.match(file):  # find the yande's pictures
