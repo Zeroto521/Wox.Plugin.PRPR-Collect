@@ -68,10 +68,10 @@ class Main(Wox):
 
         result = []
         method = 'openFolder'
-        subtitle = 'Click to open the wallpaper.'
 
         for file in os.listdir(path):
             if reg.match(file):  # find the yande's pictures
+                subtitle = 'Click to open the wallpaper(folder).'
                 raw = os.path.join(path, file)
                 aim = os.path.join(AIM_PATH, file)
                 if not os.path.exists(aim):
@@ -84,6 +84,11 @@ class Main(Wox):
                     p = raw
 
                 result.append(self.genaction(title, subtitle, method, p))
+
+        if not result:
+            subtitle = 'Click to open the error wallpaper folder.'
+            title = "Something error, can't any find picture."
+            result.append(self.genaction(title, subtitle, method, path))
 
         return result
 
