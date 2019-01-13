@@ -71,7 +71,7 @@ class Main(Wox):
 
         for file in os.listdir(path):
             if reg.match(file):  # find the yande's pictures
-                subtitle = 'Click to open the wallpaper(folder).'
+                subtitle = 'Click to open the wallpaper.'
                 raw = os.path.join(path, file)
                 aim = os.path.join(AIM_PATH, file)
                 if not os.path.exists(aim):
