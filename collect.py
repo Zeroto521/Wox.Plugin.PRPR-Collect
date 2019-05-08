@@ -8,11 +8,11 @@ from getpass import getuser
 
 from wox import Wox, WoxAPI
 
-username = getuser()
+USERNAME = getuser()
 
-AIM_PATH = r'C:\Users\{}\Pictures\舔图猫'.format(username)
+AIM_PATH = r'C:\Users\{}\Pictures\舔图猫'.format(USERNAME)
 RAW_PATH = r'C:\Users\{}\AppData\Local\Packages\55370laplamgor.PRPR_z94bv1n74kjxt\LocalState'.format(
-    username)
+    USERNAME)
 
 RESULT_TEMPLATE = {
     'Title': '',
@@ -77,19 +77,15 @@ class Main(Wox):
 
         for file in os.listdir(path):
             if reg.match(file):  # find the yande's pictures
-                subtitle = 'Click to open the wallpaper.'
                 raw = os.path.join(path, file)
                 aim = os.path.join(AIM_PATH, file)
                 if not os.path.exists(aim):
                     # copy picture to aim path
                     shutil.copy(raw, aim)
-                    title = "{} is collected.".format(file)
-                    p = aim
-                else:
-                    title = "Failed, {} already had collected.".format(file)
-                    p = raw
 
-                result.append(self.genaction(title, subtitle, method, p))
+                subtitle = 'Click to open the wallpaper.'
+                title = "{} is collected.".format(file)
+                result.append(self.genaction(title, subtitle, method, aim))
 
         if not result:
             subtitle = 'Click to open the error wallpaper folder.'
