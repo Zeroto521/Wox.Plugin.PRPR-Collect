@@ -1,12 +1,18 @@
+# -*- coding: utf-8 -*-
+
 import copy
 import os
 import re
 import shutil
+from getpass import getuser
 
 from wox import Wox, WoxAPI
 
-AIM_PATH = r'C:\Users\Zero\Pictures\舔图猫'
-RAW_PATH = r'C:\Users\Zero\AppData\Local\Packages\55370laplamgor.PRPR_z94bv1n74kjxt\LocalState'
+username = getuser()
+
+AIM_PATH = r'C:\Users\{}\Pictures\舔图猫'.format(username)
+RAW_PATH = r'C:\Users\{}\AppData\Local\Packages\55370laplamgor.PRPR_z94bv1n74kjxt\LocalState'.format(
+    username)
 
 RESULT_TEMPLATE = {
     'Title': '',
