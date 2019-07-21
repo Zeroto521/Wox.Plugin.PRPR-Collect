@@ -7,6 +7,6 @@
     "Version": "0.0.4",
     "Language": "python",
     "Website": "https://github.com/Zeroto521/Wox.Plugin.PRPR-Collect",
-    "IcoPath": "Images\\favicon.png",
-    "ExecuteFileName": "collect.py"
+    "IcoPath": "images\\favicon.png",
+    "ExecuteFileName": "main.py"
 }
