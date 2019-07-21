@@ -4,30 +4,10 @@ import copy
 import os
 import re
 import shutil
-from getpass import getuser
 
 from wox import Wox, WoxAPI
 
-USERNAME = getuser()
-
-AIM_PATH = r'C:\Users\{}\Pictures\舔图猫'.format(USERNAME)
-RAW_PATH = r'C:\Users\{}\AppData\Local\Packages\55370laplamgor.PRPR_z94bv1n74kjxt\LocalState'.format(
-    USERNAME)
-
-RESULT_TEMPLATE = {
-    'Title': '',
-    'SubTitle': '',
-    'IcoPath': 'Images/favicon.png',
-}
-
-ACTION_TEMPLATE = {
-    'JsonRPCAction': {
-        'method': '',
-        'parameters': [],
-    }
-}
-
-reg = re.compile(r'^\d+?-original\.(png|jpg|jpeg)$', flags=re.I)
+from .constants import *
 
 
 class Main(Wox):
@@ -74,6 +54,7 @@ class Main(Wox):
 
         result = []
         method = 'openFolder'
+        reg = re.compile(r'^\d+?-original\.(png|jpg|jpeg)$', flags=re.I)
 
         for file in os.listdir(path):
             if reg.match(file):  # find the yande's pictures
@@ -140,7 +121,3 @@ class Main(Wox):
     def openFolder(self, path):
         os.startfile(path)
         WoxAPI.change_query(path)
-
-
-if __name__ == '__main__':
-    Main()

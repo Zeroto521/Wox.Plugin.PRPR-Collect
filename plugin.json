@@ -4,9 +4,9 @@
     "Name": "PRPR Collect",
     "Description": "Auto collect your desktop wallpaper.",
     "Author": "Zeroto521",
-    "Version": "0.0.4",
+    "Version": "0.0.5",
     "Language": "python",
     "Website": "https://github.com/Zeroto521/Wox.Plugin.PRPR-Collect",
-    "IcoPath": "Images\\favicon.png",
-    "ExecuteFileName": "collect.py"
+    "IcoPath": "images\\favicon.png",
+    "ExecuteFileName": "main.py"
 }

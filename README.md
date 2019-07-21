@@ -2,7 +2,7 @@
 
 Auto **collect** PRPR pictures to one folder where you like.
 
-![screenshots](/Images/screenshots.png)
+![screenshots](/images/screenshots.png)
 
 ## Setting
 
